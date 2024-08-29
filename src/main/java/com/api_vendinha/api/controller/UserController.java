@@ -6,6 +6,8 @@ import com.api_vendinha.api.domain.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 /**
@@ -45,4 +47,17 @@ public class UserController {
         return userService.atualizar(id,userRequestDto);
 
     }
+
+    @GetMapping("/buscar/{id}")
+    public UserResponseDto buscar(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto) {
+        return userService.buscar(id,userRequestDto);
+
+    }
+
+    @GetMapping("/todos")
+    public List<UserResponseDto> buscarTodos() {
+        return userService.buscarTodos();
+    }
+
+
 }

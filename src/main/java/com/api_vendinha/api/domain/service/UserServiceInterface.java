@@ -6,6 +6,7 @@ import jakarta.persistence.metamodel.SingularAttribute;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Interface que define os serviços relacionados a usuários.
@@ -24,4 +25,10 @@ public interface UserServiceInterface {
     UserResponseDto save(UserRequestDto userRequestDto);
 
     UserResponseDto atualizar(Long id, UserRequestDto userRequestDto);
+
+    UserResponseDto buscar(Long id, UserRequestDto userRequestDto);
+
+    UserResponseDto buscartodos(Long id, UserRequestDto userRequestDto);
+
+    List<UserResponseDto> buscarTodos();
 }

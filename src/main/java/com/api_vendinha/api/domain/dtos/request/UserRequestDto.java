@@ -15,10 +15,36 @@ public class UserRequestDto {
      *
      * Este campo é obrigatório e será utilizado para criar ou atualizar um usuário no sistema.
      */
+
     private String name;
     private String email;
     private String password;
     private String cpfcnpj;
+    private Boolean is_active;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCpfcnpj() {
+        return cpfcnpj;
+    }
+
+    public void setCpfcnpj(String cpfcnpj) {
+        this.cpfcnpj = cpfcnpj;
+    }
+
+    public Boolean getIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
+    }
 
     public String getName() {
         return name;

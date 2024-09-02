@@ -3,6 +3,7 @@ CREATE TABLE USERS (
         NAME VARCHAR(255) ,
         EMAIL VARCHAR(255),
         PASSWORD VARCHAR(8),
-        CPFCNPJ CHAR(14)
+        CPFCNPJ CHAR(14),
+        IS_ACTIVE BOOLEAN DEFAULT TRUE
     -- Coluna NAME armazena o nome do usuário, com um máximo de 255 caracteres.
 );

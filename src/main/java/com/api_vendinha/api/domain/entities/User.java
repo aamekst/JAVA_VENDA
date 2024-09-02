@@ -41,8 +41,19 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "cpfcnpj", nullable = false)
+    @Column(name = "cpfcnpj", nullable = false, unique=true)
     private String cpfcnpj;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean is_active;
+
+    public Boolean getIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
+    }
 
     public Long getId() {
         return id;

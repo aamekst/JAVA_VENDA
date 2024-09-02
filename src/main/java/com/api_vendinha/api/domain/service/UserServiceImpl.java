@@ -7,6 +7,9 @@ import com.api_vendinha.api.domain.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Implementação do serviço de usuários.
  *
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserServiceInterface {
 
     /**
      * Salva um novo usuário ou atualiza um usuário existente.
-     *
+     * <p>
      * Cria uma nova entidade User a partir dos dados fornecidos no UserRequestDto, persiste essa
      * entidade no banco de dados, e retorna um UserResponseDto com as informações do usuário salvo.
      *
@@ -47,6 +50,7 @@ public class UserServiceImpl implements UserServiceInterface {
         user.setEmail(userRequestDto.getEmail());
         user.setCpfcnpj(userRequestDto.getCpfcnpj());
         user.setPassword(userRequestDto.getPassword());
+        user.setIs_active(userRequestDto.getIs_active());
 
         // Salva o usuário no banco de dados e obtém a entidade persistida com o ID gerado.
         User savedUser = userRepository.save(user);
@@ -58,8 +62,103 @@ public class UserServiceImpl implements UserServiceInterface {
         userResponseDto.setEmail(savedUser.getEmail());
         userResponseDto.setCpfcnpj(savedUser.getCpfcnpj());
         userResponseDto.setPassword(savedUser.getPassword());
+        userResponseDto.setIs_active(savedUser.getIs_active());
 
         // Retorna o DTO com as informações do usuário salvo.
         return userResponseDto;
     }
+
+    @Override
+    public UserResponseDto atualizar(Long id, UserRequestDto userRequestDto) {
+        User exist = userRepository.findById(id).orElseThrow();
+        exist.setName(userRequestDto.getName());
+        exist.setEmail(userRequestDto.getEmail());
+        exist.setPassword(userRequestDto.getPassword());
+        exist.setCpfcnpj(userRequestDto.getCpfcnpj());
+        exist.setIs_active(userRequestDto.getIs_active());
+
+
+        User savedUser = userRepository.save(exist);
+
+        // Cria um DTO de resposta com as informações do usuário salvo.
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setId(exist.getId());
+        userResponseDto.setName(exist.getName());
+        userResponseDto.setEmail(exist.getEmail());
+        userResponseDto.setCpfcnpj(exist.getCpfcnpj());
+        userResponseDto.setPassword(exist.getPassword());
+        userResponseDto.setIs_active(savedUser.getIs_active());
+
+
+        // Retorna o DTO com as informações do usuário salvo.
+        return userResponseDto;
+    }
+
+    @Override
+    public UserResponseDto desativar(Long id, UserRequestDto userRequestDto) {
+        User desa = userRepository.findById(id).orElseThrow();
+        desa.setIs_active(userRequestDto.getIs_active());
+
+
+        User savedUser = userRepository.save(desa);
+
+        // Cria um DTO de resposta com as informações do usuário salvo.
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setId(desa.getId());
+        userResponseDto.setName(desa.getName());
+        userResponseDto.setEmail(desa.getEmail());
+        userResponseDto.setCpfcnpj(desa.getCpfcnpj());
+        userResponseDto.setPassword(desa.getPassword());
+        userResponseDto.setIs_active(desa.getIs_active());
+
+
+        // Retorna o DTO com as informações do usuário salvo.
+        return userResponseDto;
+    }
+
+    @Override
+    public UserResponseDto buscar(Long id) {
+        User exist = userRepository.findById(id).orElseThrow();
+        UserResponseDto userResponseDto = new UserResponseDto();
+
+        userResponseDto.setId(exist.getId());
+        userResponseDto.setName(exist.getName());
+        userResponseDto.setEmail(exist.getEmail());
+        userResponseDto.setCpfcnpj(exist.getCpfcnpj());
+        userResponseDto.setPassword(exist.getPassword());
+        userResponseDto.setIs_active(exist.getIs_active());
+
+        return userResponseDto;
+    }
+
+    @Override
+    public UserResponseDto buscartodos(Long id, UserRequestDto userRequestDto) {
+        return null;
+    }
+
+    @Override
+    public List<UserResponseDto> buscarTodos() {
+        List<User> users = userRepository.findAll();
+
+        // Mapear a lista de User para uma lista de UserResponseDto
+        List<UserResponseDto> userResponseDtos = users.stream().map(user -> {
+            UserResponseDto userResponseDto = new UserResponseDto();
+
+            userResponseDto.setId(user.getId());
+            userResponseDto.setName(user.getName());
+            userResponseDto.setEmail(user.getEmail());
+            userResponseDto.setCpfcnpj(user.getCpfcnpj());
+            userResponseDto.setPassword(user.getPassword());
+            userResponseDto.setIs_active(user.getIs_active());
+
+            return userResponseDto; // Este retorno estava faltando
+        }).collect(Collectors.toList());
+
+        // Retornar a lista de UserResponseDto
+        return userResponseDtos;
+    }
+
+
+
+
 }

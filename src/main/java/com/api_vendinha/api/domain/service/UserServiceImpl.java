@@ -158,6 +158,22 @@ public class UserServiceImpl implements UserServiceInterface {
         return userResponseDtos;
     }
 
+    @Override
+    public UserResponseDto deletar(Long id, UserRequestDto userRequestDto) {
+        return null;
+    }
+
+
+    @Override
+    public UserResponseDto deletar(Long id) {
+        userRepository.deleteById(id);
+
+        UserResponseDto responseDto = new UserResponseDto();
+        responseDto.setMessage("User successfully deleted");
+
+        return responseDto;
+    }
+
 
 
 

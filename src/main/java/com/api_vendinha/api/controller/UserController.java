@@ -58,6 +58,13 @@ public class UserController {
         return userService.buscar(id);
     }
 
+
+    @DeleteMapping("/deletar/{id}")
+    public UserResponseDto deletar(@PathVariable Long id) {
+        return userService.deletar(id);
+
+    }
+
     @GetMapping("/todos")
     public List<UserResponseDto> buscarTodos() {
         return userService.buscarTodos();

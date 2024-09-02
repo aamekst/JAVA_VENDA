@@ -33,4 +33,9 @@ public interface UserServiceInterface {
     UserResponseDto buscartodos(Long id, UserRequestDto userRequestDto);
 
     List<UserResponseDto> buscarTodos();
+
+    UserResponseDto deletar(Long id, UserRequestDto userRequestDto);
+
+
+    UserResponseDto deletar(Long id);
 }

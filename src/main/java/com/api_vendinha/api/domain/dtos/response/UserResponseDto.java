@@ -60,4 +60,7 @@ public class UserResponseDto {
     public void setIs_active(Boolean is_active) {
         this.is_active = is_active;
     }
+
+    public void setMessage(String userSuccessfullyDeleted) {
+    }
 }

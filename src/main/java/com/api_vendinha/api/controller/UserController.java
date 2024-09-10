@@ -47,10 +47,21 @@ public class UserController {
         return userService.atualizar(id,userRequestDto);
 
     }
+    @PutMapping("/status/{id}")
+    public UserResponseDto desativar(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto) {
+        return userService.desativar(id,userRequestDto);
+
+    }
 
     @GetMapping("/buscar/{id}")
-    public UserResponseDto buscar(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto) {
-        return userService.buscar(id,userRequestDto);
+    public UserResponseDto buscar(@PathVariable Long id) {
+        return userService.buscar(id);
+    }
+
+
+    @DeleteMapping("/deletar/{id}")
+    public UserResponseDto deletar(@PathVariable Long id) {
+        return userService.deletar(id);
 
     }
 

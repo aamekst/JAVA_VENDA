@@ -26,9 +26,16 @@ public interface UserServiceInterface {
 
     UserResponseDto atualizar(Long id, UserRequestDto userRequestDto);
 
-    UserResponseDto buscar(Long id, UserRequestDto userRequestDto);
+    UserResponseDto buscar(Long id);
+
+    UserResponseDto desativar(Long id, UserRequestDto userRequestDto);
 
     UserResponseDto buscartodos(Long id, UserRequestDto userRequestDto);
 
     List<UserResponseDto> buscarTodos();
+
+    UserResponseDto deletar(Long id, UserRequestDto userRequestDto);
+
+
+    UserResponseDto deletar(Long id);
 }

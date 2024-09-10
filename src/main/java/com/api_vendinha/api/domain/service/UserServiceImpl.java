@@ -95,7 +95,29 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
-    public UserResponseDto buscar(Long id, UserRequestDto userRequestDto) {
+    public UserResponseDto desativar(Long id, UserRequestDto userRequestDto) {
+        User desa = userRepository.findById(id).orElseThrow();
+        desa.setIs_active(userRequestDto.getIs_active());
+
+
+        User savedUser = userRepository.save(desa);
+
+        // Cria um DTO de resposta com as informações do usuário salvo.
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setId(desa.getId());
+        userResponseDto.setName(desa.getName());
+        userResponseDto.setEmail(desa.getEmail());
+        userResponseDto.setCpfcnpj(desa.getCpfcnpj());
+        userResponseDto.setPassword(desa.getPassword());
+        userResponseDto.setIs_active(desa.getIs_active());
+
+
+        // Retorna o DTO com as informações do usuário salvo.
+        return userResponseDto;
+    }
+
+    @Override
+    public UserResponseDto buscar(Long id) {
         User exist = userRepository.findById(id).orElseThrow();
         UserResponseDto userResponseDto = new UserResponseDto();
 
@@ -136,7 +158,20 @@ public class UserServiceImpl implements UserServiceInterface {
         return userResponseDtos;
     }
 
+    @Override
+    public UserResponseDto deletar(Long id, UserRequestDto userRequestDto) {
+        return null;
+    }
 
 
+    @Override
+    public UserResponseDto deletar(Long id) {
+        userRepository.deleteById(id);
+
+        UserResponseDto responseDto = new UserResponseDto();
+        responseDto.setMessage("User successfully deleted");
+
+        return responseDto;
+    }
 
 }

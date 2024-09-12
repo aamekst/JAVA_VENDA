@@ -174,7 +174,4 @@ public class UserServiceImpl implements UserServiceInterface {
         return responseDto;
     }
 
-
-
-
 }

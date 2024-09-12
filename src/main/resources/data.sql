@@ -7,3 +7,10 @@ CREATE TABLE USERS (
         IS_ACTIVE BOOLEAN DEFAULT TRUE
     -- Coluna NAME armazena o nome do usuário, com um máximo de 255 caracteres.
 );
+
+CREATE TABLE PRODUTOS(
+	ID INTEGER PRIMARY KEY AUTO_INCREMENT, -- coluna ID é a chave primaria, do tipo INTEGER, auto-incrementada
+	NOME VARCHAR (255), -- armazena o nome do produto, com no maximo 255 caracteres.
+	QUANTIDADE VARCHAR(255),
+	PRECO DECIMAL(5,2)
+)

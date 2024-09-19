@@ -1,8 +1,11 @@
 package com.api_vendinha.api.domain.service;
 
+import com.api_vendinha.api.Infrastructure.repository.ProdutoRepository;
 import com.api_vendinha.api.Infrastructure.repository.UserRepository;
 import com.api_vendinha.api.domain.dtos.request.UserRequestDto;
+import com.api_vendinha.api.domain.dtos.response.ProdutoResponseDto;
 import com.api_vendinha.api.domain.dtos.response.UserResponseDto;
+import com.api_vendinha.api.domain.entities.Produto;
 import com.api_vendinha.api.domain.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,7 @@ public class UserServiceImpl implements UserServiceInterface {
 
     // Repositório para a persistência de dados de usuários.
     private final UserRepository userRepository;
+    private final ProdutoRepository produtoRepository;
 
     /**
      * Construtor para injeção de dependência do UserRepository.
@@ -28,8 +32,9 @@ public class UserServiceImpl implements UserServiceInterface {
      * @param userRepository O repositório de usuários a ser injetado.
      */
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, ProdutoRepository produtoRepository ) {
         this.userRepository = userRepository;
+        this.produtoRepository = produtoRepository;
     }
 
     /**
@@ -51,9 +56,20 @@ public class UserServiceImpl implements UserServiceInterface {
         user.setCpfcnpj(userRequestDto.getCpfcnpj());
         user.setPassword(userRequestDto.getPassword());
         user.setIs_active(userRequestDto.getIs_active());
-
         // Salva o usuário no banco de dados e obtém a entidade persistida com o ID gerado.
         User savedUser = userRepository.save(user);
+
+        List<Produto> produtos = userRequestDto.getProdutoRequestDtos().stream().map(dto->{
+            Produto produto = new Produto();
+            produto.setNome(dto.getNome());
+            produto.setPreco(dto.getPreco());
+            produto.setQuantidade(dto.getQuantidade());
+            produto.setUser(savedUser);
+            return produto;
+
+        }).collect(Collectors.toList());
+
+        produtoRepository.saveAll(produtos);
 
         // Cria um DTO de resposta com as informações do usuário salvo.
         UserResponseDto userResponseDto = new UserResponseDto();

@@ -11,23 +11,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-
-    public class Produto {
-
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+public class Produto {
 
 
-        @Column(nullable = false)
-        private String nome;
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Integer id;
 
-        @Column(name = "quantidade", nullable = false)
-        private String quantidade;
 
-        @Column(name = "preco", nullable = false)
-        private Double preco;
+   @Column(nullable = false)
+   private String nome;
+
+   @Column(name = "quantidade", nullable = false)
+   private String quantidade;
+
+   @Column(name = "preco", nullable = false)
+   private Double preco;
 
     public Integer getId() {
         return id;
@@ -59,5 +58,17 @@ import lombok.NoArgsConstructor;
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

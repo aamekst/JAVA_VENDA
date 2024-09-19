@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * Entidade representando um usuário no sistema.
  *
@@ -27,11 +29,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Define que o valor do ID será gerado automaticamente pelo banco de dados (auto-incremento).
     private Long id;
 
-    /**
-     * Nome do usuário.
-     *
-     * Este campo é obrigatório e não pode ser nulo, refletindo a necessidade de um nome para cada usuário.
-     */
     @Column(nullable = false) // Especifica que a coluna no banco de dados não pode ser nula.
     private String name;
 
@@ -94,4 +91,8 @@ public class User {
     public void setCpfcnpj(String cpfcnpj) {
         this.cpfcnpj = cpfcnpj;
     }
+
+    @OneToMany(mappedBy =  "users")
+    private List<Produto> produtos;
+
 }

@@ -12,5 +12,6 @@ CREATE TABLE PRODUTOS(
 	ID INTEGER PRIMARY KEY AUTO_INCREMENT, -- coluna ID é a chave primaria, do tipo INTEGER, auto-incrementada
 	NOME VARCHAR (255), -- armazena o nome do produto, com no maximo 255 caracteres.
 	QUANTIDADE VARCHAR(255),
-	PRECO DECIMAL(5,2)
-)
+	PRECO DECIMAL(5,2),
+	USER_ID INTERGER  REFERENCES USERS(ID)
+);

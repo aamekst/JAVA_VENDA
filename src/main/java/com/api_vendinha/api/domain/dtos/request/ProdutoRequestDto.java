@@ -1,5 +1,6 @@
 package com.api_vendinha.api.domain.dtos.request;
 
+import com.api_vendinha.api.domain.entities.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -36,4 +37,7 @@ public class ProdutoRequestDto {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+
+
+
 }

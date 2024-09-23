@@ -92,7 +92,7 @@ public class User {
         this.cpfcnpj = cpfcnpj;
     }
 
-    @OneToMany(mappedBy =  "users")
+    @OneToMany(mappedBy =  "user")
     private List<Produto> produtos;
 
 }

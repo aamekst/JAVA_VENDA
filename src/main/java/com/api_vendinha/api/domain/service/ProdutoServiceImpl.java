@@ -23,8 +23,9 @@ public class ProdutoServiceImpl implements ProdutoServiceInterface {
         this.produtoRepository = produtoRepository;
     }
 
-    @Override
-    public ProdutoResponseDto save(ProdutoRequestDto produtoRequestDto) {
+    //@Override
+   // public ProdutoResponseDto save(ProdutoRequestDto produtoRequestDto) {
+         /* /
         // Cria uma nova instância de produto.
         Produto produto = new Produto();
         // Define o nome do produto a partir do DTO.
@@ -43,8 +44,8 @@ public class ProdutoServiceImpl implements ProdutoServiceInterface {
         produtoResponseDto.setPreco(savedproduto.getPreco());
 
 
-        return produtoResponseDto;
-    }
+        return produtoResponseDto;*/
+   // }
 
     @Override
     public ProdutoResponseDto atualizar (Integer id, ProdutoRequestDto produtoRequestDto) {

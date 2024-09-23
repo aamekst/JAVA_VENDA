@@ -71,4 +71,5 @@ public class Produto {
     public void setUser(User user) {
         this.user = user;
     }
+
 }

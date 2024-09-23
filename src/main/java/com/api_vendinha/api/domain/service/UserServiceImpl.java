@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserServiceInterface {
         userResponseDto.setCpfcnpj(savedUser.getCpfcnpj());
         userResponseDto.setPassword(savedUser.getPassword());
         userResponseDto.setIs_active(savedUser.getIs_active());
+        
 
         // Retorna o DTO com as informações do usuário salvo.
         return userResponseDto;

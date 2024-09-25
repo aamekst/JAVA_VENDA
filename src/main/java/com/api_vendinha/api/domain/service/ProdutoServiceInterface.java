@@ -16,4 +16,5 @@ public interface ProdutoServiceInterface {
     List<ProdutoResponseDto> buscarTodos();
 
     ProdutoResponseDto buscar(Integer id);
+
 }

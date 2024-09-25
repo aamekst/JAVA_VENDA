@@ -23,7 +23,7 @@ public class Produto {
    private String nome;
 
    @Column(name = "quantidade", nullable = false)
-   private String quantidade;
+   private Integer quantidade;
 
    @Column(name = "preco", nullable = false)
    private Double preco;
@@ -44,11 +44,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -71,5 +71,6 @@ public class Produto {
     public void setUser(User user) {
         this.user = user;
     }
+
 
 }

@@ -1,25 +1,22 @@
-package com.api_vendinha.api.domain.dtos.request;
+package com.api_vendinha.api.domain.dtos.response;
 
-import com.api_vendinha.api.domain.entities.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-
-
-public class ProdutoRequestDto {
-
-    private String nome;
+public class VendaResponseDto {
+    private Integer id;
     private Integer quantidade;
     private Double preco;
+    private String nomeProduto;
 
-    public String getNome() {
-        return nome;
+    public Integer getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getQuantidade() {
@@ -38,6 +35,11 @@ public class ProdutoRequestDto {
         this.preco = preco;
     }
 
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
 
-
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
 }

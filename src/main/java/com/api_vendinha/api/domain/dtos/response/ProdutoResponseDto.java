@@ -10,7 +10,7 @@ public class ProdutoResponseDto {
 
     private Integer id;
     private String nome;
-    private String quantidade;
+    private Integer quantidade;
     private Double preco;
 
 
@@ -30,11 +30,11 @@ public class ProdutoResponseDto {
         this.id = id;
     }
 
-    public String getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 

@@ -3,6 +3,7 @@ package com.api_vendinha.api.domain.dtos.request;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,8 @@ public class UserRequestDto {
     private String password;
     private String cpfcnpj;
     private Boolean is_active;
-    private List<ProdutoRequestDto> produtoRequestDtos;
+    //private List<ProdutoRequestDto> produtoRequestDtos;
+    private List<ProdutoRequestDto> produtoRequestDtos = new ArrayList<>();
 
     public String getPassword() {
         return password;

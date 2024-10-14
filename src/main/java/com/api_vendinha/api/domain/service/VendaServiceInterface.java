@@ -3,6 +3,8 @@ package com.api_vendinha.api.domain.service;
 import com.api_vendinha.api.domain.dtos.request.VendaRequestDto;
 import com.api_vendinha.api.domain.dtos.response.VendaResponseDto;
 
+import java.util.List;
+
 /**
  * Interface que define os serviços relacionados a usuários.
  *
@@ -13,4 +15,6 @@ public interface VendaServiceInterface {
 
 
     VendaResponseDto save(VendaRequestDto VendaRequestDto);
+
+    List<VendaResponseDto> buscarTodos();
 }

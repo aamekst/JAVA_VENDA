@@ -1,6 +1,7 @@
 package com.api_vendinha.api.controller;
 
 import com.api_vendinha.api.domain.dtos.request.VendaRequestDto;
+import com.api_vendinha.api.domain.dtos.response.ProdutoResponseDto;
 import com.api_vendinha.api.domain.dtos.response.VendaResponseDto;
 import com.api_vendinha.api.domain.service.VendaServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class VendaController {
     public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
         // Retorna apenas a mensagem da exceção e o status HTTP 400 (Bad Request)
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/todos")
+    public List<VendaResponseDto> buscarTodos() {
+        return vendaServiceInterface.buscarTodos();
     }
 
 }

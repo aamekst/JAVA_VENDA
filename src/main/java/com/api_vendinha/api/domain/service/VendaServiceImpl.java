@@ -11,6 +11,9 @@ import com.api_vendinha.api.domain.entities.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Implementação do serviço de vendas.
  *
@@ -70,8 +73,31 @@ public class VendaServiceImpl implements VendaServiceInterface {
         vendaResponseDto.setPreco(savedVenda.getPreco());
         vendaResponseDto.setQuantidade(savedVenda.getQuantidade());
         vendaResponseDto.setNomeProduto(savedVenda.getProduto().getNome());
+        vendaResponseDto.setNomeCliente(savedVenda.getUser().getName());
 
         // Retorna o DTO com as informações da venda salva
         return vendaResponseDto;
+    }
+
+    @Override
+    public List<VendaResponseDto> buscarTodos() {
+        List<Venda> vendas = vendaRepository.findAll();
+
+        // Mapear a lista de Venda para uma lista de VendaResponseDto
+        List<VendaResponseDto> vendaResponseDtos = vendas.stream().map(venda -> {
+            VendaResponseDto vendaResponseDto = new VendaResponseDto();
+
+            vendaResponseDto.setId(venda.getId());
+            vendaResponseDto.setNomeProduto(venda.getNomeProduto());
+            vendaResponseDto.setPreco(venda.getPreco());
+            vendaResponseDto.setQuantidade(venda.getQuantidade());
+            vendaResponseDto.setNomeCliente(venda.getUser().getName());
+
+
+            return vendaResponseDto; // Este retorno estava faltando
+        }).collect(Collectors.toList());
+
+        // Retornar a lista de VendaResponseDto
+        return vendaResponseDtos;
     }
 }

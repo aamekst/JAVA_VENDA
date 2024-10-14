@@ -50,6 +50,8 @@ public class Venda {
         return quantidade;
     }
 
+    public String getNomeProduto(){ return produto.getNome();}
+
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
@@ -81,4 +83,7 @@ public class Venda {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
+
+
 }

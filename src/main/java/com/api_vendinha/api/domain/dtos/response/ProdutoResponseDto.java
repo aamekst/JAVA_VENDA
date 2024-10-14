@@ -13,6 +13,7 @@ public class ProdutoResponseDto {
     private Integer quantidade;
     private Double preco;
 
+    private UserResponseDto userResponseDto;
 
     public Integer getId() {
         return id;
@@ -46,5 +47,11 @@ public class ProdutoResponseDto {
         this.preco = preco;
     }
 
-
+    public UserResponseDto getUserResponseDto() {
+        return userResponseDto;
     }
+
+    public void setUserResponseDto(UserResponseDto userResponseDto) {
+        this.userResponseDto = userResponseDto;
+    }
+}

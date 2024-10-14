@@ -13,7 +13,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 /**
  * Controlador REST para gerenciar operações relacionadas aos usuários.
  */
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/users") // Define o caminho base para as requisições deste controlador.
 public class UserController {

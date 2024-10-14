@@ -1,6 +1,7 @@
 package com.api_vendinha.api.domain.service;
 
 import com.api_vendinha.api.Infrastructure.repository.ProdutoRepository;
+import com.api_vendinha.api.Infrastructure.repository.UserRepository;
 import com.api_vendinha.api.domain.dtos.request.ProdutoRequestDto;
 import com.api_vendinha.api.domain.dtos.response.ProdutoResponseDto;
 import com.api_vendinha.api.domain.dtos.response.UserResponseDto;
@@ -18,22 +19,30 @@ import java.util.stream.Collectors;
 public class ProdutoServiceImpl implements ProdutoServiceInterface {
 
     private final ProdutoRepository produtoRepository;
+    private final UserRepository userRepository;
+
     @Autowired
-    public ProdutoServiceImpl(ProdutoRepository produtoRepository) {
+    public ProdutoServiceImpl(
+            ProdutoRepository produtoRepository,
+            UserRepository userRepository
+    ) {
         this.produtoRepository = produtoRepository;
+        this.userRepository = userRepository;
     }
 
-    //@Override
-   // public ProdutoResponseDto save(ProdutoRequestDto produtoRequestDto) {
-         /* /
+    @Override
+    public ProdutoResponseDto save(ProdutoRequestDto produtoRequestDto) {
+
         // Cria uma nova instância de produto.
-        Produto produto = new Produto();
+
+        User user = userRepository.findById(Long.valueOf(produtoRequestDto.getUser_id())).orElseThrow();
+
+                Produto produto = new Produto();
         // Define o nome do produto a partir do DTO.
         produto.setNome(produtoRequestDto.getNome());
         produto.setQuantidade(produtoRequestDto.getQuantidade());
         produto.setPreco(produtoRequestDto.getPreco());
-
-
+        produto.setUser(user);
 
         Produto savedproduto = produtoRepository.save(produto);
 
@@ -42,13 +51,23 @@ public class ProdutoServiceImpl implements ProdutoServiceInterface {
         produtoResponseDto.setNome(savedproduto.getNome());
         produtoResponseDto.setQuantidade(savedproduto.getQuantidade());
         produtoResponseDto.setPreco(savedproduto.getPreco());
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setId(user.getId());
+        userResponseDto.setName(user.getName());
+        userResponseDto.setEmail(user.getEmail());
+        userResponseDto.setCpfcnpj(user.getCpfcnpj());
+        userResponseDto.setPassword(user.getPassword());
+        userResponseDto.setIs_active(user.getIs_active());
+        produtoResponseDto.setUserResponseDto(
+               userResponseDto
+        );
 
 
-        return produtoResponseDto;*/
-   // }
+        return produtoResponseDto;
+    }
 
     @Override
-    public ProdutoResponseDto atualizar (Integer id, ProdutoRequestDto produtoRequestDto) {
+    public ProdutoResponseDto atualizar(Integer id, ProdutoRequestDto produtoRequestDto) {
         Produto exist = produtoRepository.findById(id).orElseThrow();
 
         exist.setNome(produtoRequestDto.getNome());
@@ -91,7 +110,7 @@ public class ProdutoServiceImpl implements ProdutoServiceInterface {
         return produtoResponseDtos;
     }
 
-    public ProdutoResponseDto buscar(Integer id){
+    public ProdutoResponseDto buscar(Integer id) {
         Produto exist = produtoRepository.findById(id).orElseThrow();
         ProdutoResponseDto produtoResponseDto = new ProdutoResponseDto();
 

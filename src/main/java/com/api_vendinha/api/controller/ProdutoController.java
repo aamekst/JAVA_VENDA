@@ -20,10 +20,10 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-   // @PostMapping
-    //public ProdutoResponseDto salvar(@RequestBody ProdutoRequestDto produtoRequestDto) {
-   //     return produtoService.save(produtoRequestDto);
-    //}
+    @PostMapping
+    public ProdutoResponseDto salvar(@RequestBody ProdutoRequestDto produtoRequestDto) {
+        return produtoService.save(produtoRequestDto);
+    }
 
     @PutMapping("/atualizar/{id}")
     public ProdutoResponseDto atualizar(@PathVariable Integer id, @RequestBody ProdutoRequestDto produtoRequestDto) {

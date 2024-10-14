@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProdutoServiceInterface {
 
-   // ProdutoResponseDto save(ProdutoRequestDto produtoRequestDto);
+    ProdutoResponseDto save(ProdutoRequestDto produtoRequestDto);
 
     ProdutoResponseDto atualizar(Integer id, ProdutoRequestDto produtoRequestDto);
 

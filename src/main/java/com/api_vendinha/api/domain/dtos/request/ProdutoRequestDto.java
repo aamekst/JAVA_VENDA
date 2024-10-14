@@ -13,6 +13,7 @@ public class ProdutoRequestDto {
     private String nome;
     private Integer quantidade;
     private Double preco;
+    private Integer user_id;
 
     public String getNome() {
         return nome;
@@ -38,6 +39,11 @@ public class ProdutoRequestDto {
         this.preco = preco;
     }
 
+    public Integer getUser_id() {
+        return user_id;
+    }
 
-
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
 }

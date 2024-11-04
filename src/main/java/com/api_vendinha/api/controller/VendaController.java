@@ -13,7 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/vendas")
 public class VendaController {

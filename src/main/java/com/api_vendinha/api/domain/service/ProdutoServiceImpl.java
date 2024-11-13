@@ -119,6 +119,15 @@ public class ProdutoServiceImpl implements ProdutoServiceInterface {
         produtoResponseDto.setQuantidade(exist.getQuantidade());
         produtoResponseDto.setPreco(exist.getPreco());
 
+        if (exist.getUser() != null) {
+            UserResponseDto userResponseDto = new UserResponseDto();
+            userResponseDto.setId(exist.getUser().getId());
+            userResponseDto.setName(exist.getUser().getName());
+            userResponseDto.setEmail(exist.getUser().getEmail());
+            produtoResponseDto.setUserResponseDto(userResponseDto);
+        }
+
+
         return produtoResponseDto;
     }
 }

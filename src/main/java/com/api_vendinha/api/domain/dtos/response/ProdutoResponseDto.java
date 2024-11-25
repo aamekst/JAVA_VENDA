@@ -54,4 +54,7 @@ public class ProdutoResponseDto {
     public void setUserResponseDto(UserResponseDto userResponseDto) {
         this.userResponseDto = userResponseDto;
     }
+
+    public void setMessage(String userSuccessfullyDeleted) {
+    }
 }

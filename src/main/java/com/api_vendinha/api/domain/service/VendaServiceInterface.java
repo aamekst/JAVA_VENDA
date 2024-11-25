@@ -21,4 +21,6 @@ public interface VendaServiceInterface {
     VendaResponseDto atualizar(Integer id, VendaRequestDto vendaRequestDto);
 
     VendaResponseDto buscar(Integer id);
+
+    VendaResponseDto deletar(Long id);
 }

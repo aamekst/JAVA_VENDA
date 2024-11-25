@@ -169,6 +169,10 @@ public class VendaServiceImpl implements VendaServiceInterface {
         return vendaResponseDto;
     }
 
+    @Override
+    public VendaResponseDto deletar(Long id) {
+        return null;
+    }
 
 
 }

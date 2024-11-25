@@ -17,4 +17,7 @@ public interface ProdutoServiceInterface {
 
     ProdutoResponseDto buscar(Integer id);
 
+    ProdutoResponseDto deletar(Long id);
+
+    ProdutoResponseDto deletar(Integer id);
 }

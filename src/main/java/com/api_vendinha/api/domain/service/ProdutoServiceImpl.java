@@ -130,4 +130,20 @@ public class ProdutoServiceImpl implements ProdutoServiceInterface {
 
         return produtoResponseDto;
     }
+
+    @Override
+    public ProdutoResponseDto deletar(Long id) {
+        return null;
+    }
+
+
+    @Override
+    public ProdutoResponseDto deletar(Integer id) {
+        produtoRepository.deleteById(id);
+
+        ProdutoResponseDto responseDto = new ProdutoResponseDto();
+        responseDto.setMessage("User successfully deleted");
+
+        return responseDto;
+    }
 }

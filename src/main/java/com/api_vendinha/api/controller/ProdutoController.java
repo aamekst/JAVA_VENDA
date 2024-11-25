@@ -41,4 +41,10 @@ public class ProdutoController {
         return produtoService.buscar(id);
     }
 
+    @DeleteMapping("/deletar/{id}")
+    public ProdutoResponseDto deletar(@PathVariable Integer id) {
+        return produtoService.deletar(id);
+
+    }
+
 }

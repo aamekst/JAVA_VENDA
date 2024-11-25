@@ -51,4 +51,9 @@ public class VendaController {
         return vendaServiceInterface.buscar(id);
     }
 
+    @DeleteMapping("/deletar/{id}")
+    public VendaResponseDto deletar(@PathVariable Long id) {
+        return vendaServiceInterface.deletar(id);
+
+    }
 }

@@ -52,4 +52,6 @@ public class VendaResponseDto {
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
+
+
 }

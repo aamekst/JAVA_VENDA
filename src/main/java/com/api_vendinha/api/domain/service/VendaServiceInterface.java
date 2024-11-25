@@ -17,4 +17,8 @@ public interface VendaServiceInterface {
     VendaResponseDto save(VendaRequestDto VendaRequestDto);
 
     List<VendaResponseDto> buscarTodos();
+
+    VendaResponseDto atualizar(Integer id, VendaRequestDto vendaRequestDto);
+
+    VendaResponseDto buscar(Integer id);
 }

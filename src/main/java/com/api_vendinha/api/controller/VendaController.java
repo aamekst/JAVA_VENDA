@@ -40,4 +40,15 @@ public class VendaController {
         return vendaServiceInterface.buscarTodos();
     }
 
+    @PutMapping("/atualizar/{id}")
+    public VendaResponseDto atualizar(@PathVariable Integer id, @RequestBody VendaRequestDto vendaRequestDto) {
+        return vendaServiceInterface.atualizar(id,vendaRequestDto);
+
+    }
+
+    @GetMapping("/buscar/{id}")
+    public VendaResponseDto buscar(@PathVariable Integer id){
+        return vendaServiceInterface.buscar(id);
+    }
+
 }

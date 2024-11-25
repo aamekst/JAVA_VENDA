@@ -52,7 +52,7 @@ public class VendaController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public VendaResponseDto deletar(@PathVariable Long id) {
+    public VendaResponseDto deletar(@PathVariable Integer id) {
         return vendaServiceInterface.deletar(id);
 
     }

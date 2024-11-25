@@ -54,4 +54,6 @@ public class VendaResponseDto {
     }
 
 
+    public void setMessage(String userSuccessfullyDeleted) {
+    }
 }

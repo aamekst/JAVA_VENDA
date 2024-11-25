@@ -169,9 +169,15 @@ public class VendaServiceImpl implements VendaServiceInterface {
         return vendaResponseDto;
     }
 
+
     @Override
-    public VendaResponseDto deletar(Long id) {
-        return null;
+    public VendaResponseDto deletar(Integer id) {
+        vendaRepository.deleteById(id);
+
+        VendaResponseDto responseDto = new VendaResponseDto();
+        responseDto.setMessage("User successfully deleted");
+
+        return responseDto;
     }
 
 

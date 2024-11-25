@@ -22,5 +22,6 @@ public interface VendaServiceInterface {
 
     VendaResponseDto buscar(Integer id);
 
-    VendaResponseDto deletar(Long id);
+
+    VendaResponseDto deletar(Integer id);
 }
